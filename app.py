@@ -3,8 +3,10 @@ import pickle
 import numpy as np
 
 # Load the trained model and scaler
-with open('churn_model.pkl', 'rb') as model_file, open('scaler.pkl', 'rb') as scaler_file:
+with open('churn_model.pkl', 'rb') as model_file:
     model = pickle.load(model_file)
+
+with open('scaler.pkl', 'rb') as scaler_file:
     scaler = pickle.load(scaler_file)
 
 # Define the Streamlit app
@@ -66,3 +68,4 @@ if st.button("Predict"):
         st.subheader(f"The customer is likely to churn with a probability of {churn_prob:.2f}")
     else:
         st.subheader(f"The customer is not likely to churn with a probability of {1-churn_prob:.2f}")
+
